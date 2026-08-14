@@ -4,8 +4,6 @@ import {
   Banknote,
   LineChart,
   LayoutGrid,
-  TrendingUp,
-  TrendingDown,
 } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
 import { TickerStrip } from "../components/MarketOverview";
@@ -49,13 +47,6 @@ export default function Dashboard() {
     selectedCoin,
     setSelectedCoin,
   } = useOutletContext();
-
-  const topMovers = [...allCoins]
-    .sort(
-      (a, b) =>
-        Math.abs(b.change24h) - Math.abs(a.change24h)
-    )
-    .slice(0, 4);
 
   const recentActivity = recentTransactions.slice(0, 4);
 
@@ -134,72 +125,7 @@ export default function Dashboard() {
           />
         </section>
 
-        <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="border border-border bg-page">
-            <div className="flex items-center justify-between border-b border-border px-4 py-3">
-              <h3 className="font-display text-sm font-semibold text-ink-900">
-                Top Market Movers
-              </h3>
-
-              <Link
-                to="/markets"
-                className="text-[11px] font-semibold text-brand-500 transition-colors hover:text-brand-600"
-              >
-                View Markets
-              </Link>
-            </div>
-
-            <ul className="divide-y divide-border">
-              {topMovers.map((coin) => {
-                const positive = coin.change24h >= 0;
-
-                return (
-                  <li
-                    key={coin.id}
-                    className="flex items-center justify-between gap-3 px-4 py-2.5 transition-colors hover:bg-surface-alt"
-                  >
-                    <div className="flex min-w-0 items-center gap-2.5">
-                      <span
-                        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white"
-                        style={{
-                          backgroundColor: coin.color,
-                        }}
-                      >
-                        {coin.icon}
-                      </span>
-
-                      <div className="min-w-0">
-                        <p className="truncate text-xs font-semibold text-ink-900">
-                          {coin.name}
-                        </p>
-
-                        <p className="text-[10px] text-ink-400">
-                          {formatCurrency(coin.price)}
-                        </p>
-                      </div>
-                    </div>
-
-                    <span
-                      className={`inline-flex shrink-0 items-center gap-0.5 rounded px-1.5 py-0.5 text-[10px] font-bold tabular ${
-                        positive
-                          ? "bg-buy-100 text-buy-700"
-                          : "bg-sell-100 text-sell-700"
-                      }`}
-                    >
-                      {positive ? (
-                        <TrendingUp className="h-3 w-3" />
-                      ) : (
-                        <TrendingDown className="h-3 w-3" />
-                      )}
-
-                      {Math.abs(coin.change24h).toFixed(2)}%
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
+        <div className="mt-5">
           <div className="border border-border bg-page">
             <div className="flex items-center justify-between border-b border-border px-4 py-3">
               <h3 className="font-display text-sm font-semibold text-ink-900">
