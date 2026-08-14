@@ -2,7 +2,7 @@
 
 A modern, light-themed cryptocurrency exchange dashboard UI built with **React**, **Vite**, and **Tailwind CSS**. Vantix reproduces the core screens of a professional trading platform — live market table, price chart, order book, a buy/sell trading panel, portfolio overview, and a transaction history — entirely with mock/static data (no backend or live API calls).
 
-![Vantix dashboard — desktop view](./screenshots/dashboard-desktop.png)
+![Vantix dashboard — desktop view](./screenshots/Screenshot%20Dashboard.png)
 
 ## Description
 
